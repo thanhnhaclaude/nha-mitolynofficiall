@@ -1,0 +1,18 @@
+<%- include('../partials/head') %>
+
+<section class="page-hero">
+  <div class="container narrow">
+    <h1><%= page.doc.title %></h1>
+  </div>
+</section>
+
+<section class="section legal">
+  <div class="container narrow">
+    <% page.doc.sections.forEach(([h, t]) => { %>
+    <h2><%= h %></h2>
+    <p><%= t %></p>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

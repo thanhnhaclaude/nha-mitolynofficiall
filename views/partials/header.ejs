@@ -1,0 +1,19 @@
+<header class="site-header" id="top">
+  <div class="topbar">Free US shipping on 3 &amp; 6 bottle packages &middot; <%= guaranteeDays %>-day money-back guarantee</div>
+  <div class="container nav-wrap">
+    <a class="logo" href="/" aria-label="<%= site.name %> home">
+      <img src="/img/favicon.svg" alt="" width="32" height="32">
+      <span><%= site.name %></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <svg width="24" height="24"><use href="#i-menu"/></svg>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <a href="/#how-it-works">How It Works</a>
+      <a href="/ingredients" <%= path === '/ingredients' ? 'aria-current=page' : '' %>>Ingredients</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/faq" <%= path === '/faq' ? 'aria-current=page' : '' %>>FAQ</a>
+      <a class="btn btn-sm" href="/#pricing">Order Now</a>
+    </nav>
+  </div>
+</header>

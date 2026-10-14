@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= page.title %></title>
+  <meta name="description" content="<%= page.description %>">
+  <link rel="canonical" href="<%= site.url + page.canonical %>">
+  <meta name="robots" content="<%= page.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large' %>">
+  <meta name="theme-color" content="#0f5c4d">
+  <% if (site.verification.google) { %><meta name="google-site-verification" content="<%= site.verification.google %>"><% } %>
+  <% if (site.verification.bing) { %><meta name="msvalidate.01" content="<%= site.verification.bing %>"><% } %>
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="<%= site.name %>">
+  <meta property="og:title" content="<%= page.title %>">
+  <meta property="og:description" content="<%= page.description %>">
+  <meta property="og:url" content="<%= site.url + page.canonical %>">
+  <% if (site.ogImage) { %><meta property="og:image" content="<%= site.url + site.ogImage %>"><% } %>
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Raleway:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/css/style.css?v=1">
+  <link rel="preload" as="image" href="/img/bottle.svg">
+
+  <%- include('schema') %>
+
+  <% const t = site.tracking; %>
+  <% if (t.gtm) { %>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','<%= t.gtm %>');</script>
+  <% } %>
+  <% if (t.ga4 || t.adsId) { %>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= t.ga4 || t.adsId %>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    <% if (t.ga4) { %>gtag('config', '<%= t.ga4 %>');<% } %>
+    <% if (t.adsId) { %>gtag('config', '<%= t.adsId %>');<% } %>
+  </script>
+  <% } %>
+  <% if (t.uet) { %>
+  <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"<%= t.uet %>",enableAutoSpaTracking:true};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+  <% } %>
+  <script>window.SITE_TRACKING = <%- JSON.stringify({ adsId: t.adsId, adsLabel: t.adsLabel }) %>;</script>
+</head>
+<body>
+<% if (t.gtm) { %><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= t.gtm %>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><% } %>
+<a class="skip-link" href="#main">Skip to content</a>
+<%- include('icons') %>
+<%- include('header') %>
+<main id="main">

@@ -1,0 +1,32 @@
+<section class="section pricing" id="pricing" aria-labelledby="pricing-title">
+  <div class="container">
+    <p class="eyebrow center">Choose your package</p>
+    <h2 id="pricing-title" class="center">Start feeling like yourself again</h2>
+    <p class="lead center">Most people choose the 3 or 6 bottle package so they can give their body the time it needs. Every order is protected by our <%= guaranteeDays %>-day guarantee.</p>
+
+    <div class="price-grid">
+      <% packages.forEach((p) => { %>
+      <article class="price-card reveal<%= p.popular ? ' is-popular' : '' %>">
+        <% if (p.popular) { %><div class="ribbon">Best Value &middot; Biggest Savings</div><% } %>
+        <h3><%= p.name %></h3>
+        <p class="supply"><%= p.bottles %> Bottle<%= p.bottles > 1 ? 's' : '' %> &middot; <%= p.supply %></p>
+        <div class="bottles" aria-hidden="true">
+          <% for (let i = 0; i < Math.min(p.bottles, 6); i++) { %><img src="/img/bottle.svg" alt="" width="60" height="110" loading="lazy"><% } %>
+        </div>
+        <p class="price"><span class="amount">$<%= p.price %></span> <span class="per">/ bottle</span></p>
+        <p class="total">Total <s>$<%= p.oldPrice %></s> <strong>$<%= p.total %></strong></p>
+        <ul class="perks">
+          <li><svg width="18" height="18" aria-hidden="true"><use href="#i-<%= p.shipping.startsWith('Free') ? 'truck' : 'check' %>"/></svg> <%= p.shipping %></li>
+          <li><svg width="18" height="18" aria-hidden="true"><use href="#i-shield"/></svg> <%= guaranteeDays %>-day guarantee</li>
+          <% if (p.bonus) { %><li class="bonus"><svg width="18" height="18" aria-hidden="true"><use href="#i-gift"/></svg> Free bonus guides included</li><% } %>
+        </ul>
+        <a class="btn btn-block<%= p.popular ? ' btn-lg' : ' btn-outline' %>" href="/order?pkg=<%= p.id %>" rel="sponsored nofollow" data-track="order" data-pkg="<%= p.id %>">
+          Buy Now <svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <p class="secure"><svg width="14" height="14" aria-hidden="true"><use href="#i-lock"/></svg> Secure 256-bit SSL checkout</p>
+      </article>
+      <% }) %>
+    </div>
+    <p class="fine center">One-time payment. No subscription, no hidden fees.</p>
+  </div>
+</section>

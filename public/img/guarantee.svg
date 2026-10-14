@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="180-day money-back guarantee">
+  <g transform="translate(100 100)">
+    <path fill="#f29f05" d="M0-96 13-86 29-91 38-77 55-76 58-60 73-52 70-36 81-22 72-8 76 8 63 19 61 36 45 42 37 57 21 55 8 66-8 58-21 66-35 54-51 55-57 40-72 33-70 17-82 6-75-9-82-24-70-34-70-51-55-57-49-72-33-71-22-84-6-79Z" transform="rotate(4)"/>
+    <circle r="68" fill="#0f5c4d"/>
+    <circle r="60" fill="none" stroke="#f29f05" stroke-width="2" stroke-dasharray="4 4"/>
+    <text y="-18" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#fff" letter-spacing="1">MONEY-BACK</text>
+    <text y="22" text-anchor="middle" font-family="Georgia, serif" font-size="40" font-weight="700" fill="#f29f05">180</text>
+    <text y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#fff" letter-spacing=".5">DAY GUARANTEE</text>
+  </g>
+</svg>

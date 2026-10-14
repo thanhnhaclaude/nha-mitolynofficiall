@@ -1,0 +1,30 @@
+<%- include('../partials/head') %>
+
+<section class="page-hero">
+  <div class="container narrow center">
+    <p class="eyebrow">Full transparency</p>
+    <h1><%= site.name %> ingredients: what's inside and why</h1>
+    <p class="lead">Every capsule combines six plant-based ingredients selected for their traditional use and modern research around cellular energy, antioxidant protection and metabolism.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container narrow">
+    <% ingredients.forEach((ing, i) => { %>
+    <article class="ing-row reveal" id="<%= ing.name.toLowerCase().replace(/[^a-z]+/g, '-') %>">
+      <span class="berry big" style="--berry: <%= ing.color %>" aria-hidden="true"></span>
+      <div>
+        <h2><%= i + 1 %>. <%= ing.name %></h2>
+        <p class="latin"><%= ing.latin %></p>
+        <p><%= ing.benefit %></p>
+      </div>
+    </article>
+    <% }) %>
+    <div class="note">
+      <p><strong>Also good to know:</strong> <%= site.name %> is made in a GMP-certified facility in the USA, is non-GMO and gluten-free, and contains no stimulants. Always read the full supplement facts label and talk to your doctor if you take medication.</p>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/pricing') %>
+<%- include('../partials/footer') %>

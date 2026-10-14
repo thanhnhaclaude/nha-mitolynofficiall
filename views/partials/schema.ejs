@@ -1,0 +1,41 @@
+<%
+const org = {
+  '@type': 'Organization',
+  '@id': site.url + '/#org',
+  name: site.businessName,
+  url: site.url,
+  logo: site.url + '/img/favicon.svg',
+  email: site.email,
+};
+const graph = [
+  org,
+  { '@type': 'WebSite', '@id': site.url + '/#website', url: site.url, name: site.name, publisher: { '@id': site.url + '/#org' } },
+  { '@type': 'WebPage', url: site.url + page.canonical, name: page.title, description: page.description, isPartOf: { '@id': site.url + '/#website' } },
+];
+if (page.schema === 'home') {
+  const prices = packages.map((p) => p.total);
+  graph.push({
+    '@type': 'Product',
+    name: site.name,
+    description: 'Once-daily dietary supplement with six plant-based ingredients designed to support healthy mitochondrial function, metabolism and natural energy.',
+    image: site.url + '/img/bottle.svg',
+    brand: { '@type': 'Brand', name: site.name },
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'USD',
+      lowPrice: Math.min(...prices),
+      highPrice: Math.max(...prices),
+      offerCount: packages.length,
+      availability: 'https://schema.org/InStock',
+      url: site.url + '/#pricing',
+    },
+  });
+}
+if (page.schema === 'home' || page.schema === 'faq') {
+  graph.push({
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  });
+}
+%>
+<script type="application/ld+json"><%- JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c') %></script>

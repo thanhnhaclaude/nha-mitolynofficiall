@@ -1,0 +1,47 @@
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="logo logo-light" href="/"><img src="/img/favicon.svg" alt="" width="28" height="28"><span><%= site.name %></span></a>
+        <p class="muted-light">Plant-based support for healthy metabolism and natural energy.</p>
+        <p class="muted-light"><svg width="16" height="16" aria-hidden="true"><use href="#i-mail"/></svg> <a href="mailto:<%= site.email %>"><%= site.email %></a></p>
+      </div>
+      <nav aria-label="Footer">
+        <h2 class="footer-title">Information</h2>
+        <ul>
+          <li><a href="/ingredients">Ingredients</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <h2 class="footer-title">Legal</h2>
+        <ul>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms-of-service">Terms of Service</a></li>
+          <li><a href="/disclaimer">Medical Disclaimer</a></li>
+          <% if (site.affiliateMode) { %><li><a href="/affiliate-disclosure">Affiliate Disclosure</a></li><% } %>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="disclaimer">
+      <p><strong>FDA Disclaimer:</strong> These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease. Individual results vary. Consult your healthcare provider before starting any supplement.</p>
+      <% if (site.affiliateMode) { %>
+      <p><strong>Affiliate Disclosure:</strong> This site contains affiliate links. If you purchase through them, we may earn a commission at no extra cost to you. <a href="/affiliate-disclosure">Learn more</a>.</p>
+      <% } %>
+      <p>&copy; <%= site.year %> <%= site.businessName %>. All rights reserved.<% if (site.businessAddress) { %> &middot; <%= site.businessAddress %><% } %></p>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta" aria-hidden="true">
+  <span><strong>Save up to 50%</strong><br>Free US shipping</span>
+  <a class="btn btn-sm" href="/#pricing" tabindex="-1">Get Discount</a>
+</div>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>

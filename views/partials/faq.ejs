@@ -1,0 +1,8 @@
+<div class="faq-list">
+  <% faqs.forEach((f, i) => { %>
+  <details class="faq-item"<%= i === 0 ? ' open' : '' %>>
+    <summary><h3><%= f.q %></h3><span class="faq-icon" aria-hidden="true"></span></summary>
+    <div class="faq-body"><p><%= f.a %></p></div>
+  </details>
+  <% }) %>
+</div>

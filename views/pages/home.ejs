@@ -1,0 +1,162 @@
+<%- include('../partials/head') %>
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="blob blob-1" aria-hidden="true"></div>
+  <div class="blob blob-2" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Natural mitochondrial support</p>
+      <h1 id="hero-title">Feel the energy you've been missing, <span class="hl">starting at the cellular level</span></h1>
+      <p class="lead">You've tried eating less and moving more. If you still feel tired and stuck, it may be time to support the part of your body that turns food into energy. <strong><%= site.name %></strong> is a once-daily, plant-based formula designed to support a healthy metabolism and natural, all-day energy.</p>
+      <ul class="checks">
+        <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg> 6 plant-based ingredients, 1 capsule a day</li>
+        <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg> No stimulants, no jitters, no crash</li>
+        <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg> <%= guaranteeDays %>-day money-back guarantee</li>
+      </ul>
+      <div class="hero-cta">
+        <a class="btn btn-lg" href="#pricing">See Today's Discount <svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="link" href="#how-it-works">How does it work?</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="halo" aria-hidden="true"></div>
+      <img class="hero-bottle" src="/img/bottle.svg" alt="<%= site.name %> dietary supplement bottle, 30 capsules" width="300" height="550" fetchpriority="high">
+      <div class="badge-float badge-1"><svg width="18" height="18" aria-hidden="true"><use href="#i-leaf"/></svg> Plant-based</div>
+      <div class="badge-float badge-2"><svg width="18" height="18" aria-hidden="true"><use href="#i-shield"/></svg> <%= guaranteeDays %>-day guarantee</div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-strip" aria-label="Quality standards">
+  <div class="container trust-row">
+    <% quality.forEach((q) => { %>
+    <span><svg width="20" height="20" aria-hidden="true"><use href="#i-<%= q.icon %>"/></svg> <%= q.label %></span>
+    <% }) %>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="pain-title">
+  <div class="container">
+    <p class="eyebrow center">Sound familiar?</p>
+    <h2 id="pain-title" class="center">You're doing everything "right," so why do you still feel this way?</h2>
+    <div class="card-grid three">
+      <% painPoints.forEach((p) => { %>
+      <article class="card pain reveal">
+        <span class="icon-circle muted"><svg width="26" height="26" aria-hidden="true"><use href="#i-<%= p.icon %>"/></svg></span>
+        <h3><%= p.title %></h3>
+        <p><%= p.text %></p>
+      </article>
+      <% }) %>
+    </div>
+    <p class="lead center empathy reveal">If this is you, you are not lazy and you are not alone. Millions of adults feel exactly the same way, and there may be a reason no diet ever mentioned.</p>
+  </div>
+</section>
+
+<section class="section tinted" id="how-it-works" aria-labelledby="mech-title">
+  <div class="container split">
+    <div class="split-visual reveal">
+      <img src="/img/mitochondria.svg" alt="Illustration of a healthy mitochondrion converting nutrients into cellular energy" width="520" height="420" loading="lazy">
+    </div>
+    <div class="reveal">
+      <p class="eyebrow">The science in plain English</p>
+      <h2 id="mech-title"><%= mechanism.heading %></h2>
+      <% mechanism.paragraphs.forEach((t) => { %><p><%= t %></p><% }) %>
+      <a class="btn" href="#pricing">Support My Energy <svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="ing-title">
+  <div class="container">
+    <p class="eyebrow center">What's inside</p>
+    <h2 id="ing-title" class="center">6 plant-based ingredients, 1 simple capsule</h2>
+    <div class="card-grid three">
+      <% ingredients.forEach((ing) => { %>
+      <article class="card ingredient reveal">
+        <span class="berry" style="--berry: <%= ing.color %>" aria-hidden="true"></span>
+        <h3><%= ing.name %></h3>
+        <p class="latin"><%= ing.latin %></p>
+        <p><%= ing.benefit %></p>
+      </article>
+      <% }) %>
+    </div>
+    <p class="center"><a class="link" href="/ingredients">Read the full ingredient breakdown</a></p>
+  </div>
+</section>
+
+<section class="section dark" aria-labelledby="ben-title">
+  <div class="container">
+    <p class="eyebrow center light">Why people choose <%= site.name %></p>
+    <h2 id="ben-title" class="center">Support your body from the inside out</h2>
+    <div class="card-grid four">
+      <% benefits.forEach((b) => { %>
+      <article class="benefit reveal">
+        <span class="icon-circle"><svg width="28" height="28" aria-hidden="true"><use href="#i-<%= b.icon %>"/></svg></span>
+        <h3><%= b.title %></h3>
+        <p><%= b.text %></p>
+      </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="steps-title">
+  <div class="container">
+    <p class="eyebrow center">Simple daily routine</p>
+    <h2 id="steps-title" class="center">How to use <%= site.name %></h2>
+    <ol class="steps">
+      <% steps.forEach((s, i) => { %>
+      <li class="step reveal"><span class="step-num"><%= i + 1 %></span><h3><%= s.title %></h3><p><%= s.text %></p></li>
+      <% }) %>
+    </ol>
+  </div>
+</section>
+
+<% if (reviews.length) { %>
+<section class="section tinted" aria-labelledby="rev-title">
+  <div class="container">
+    <p class="eyebrow center">Verified customers</p>
+    <h2 id="rev-title" class="center">What customers are saying</h2>
+    <div class="card-grid three">
+      <% reviews.forEach((r) => { %>
+      <figure class="card review reveal">
+        <div class="stars" aria-label="<%= r.rating %> out of 5 stars"><% for (let i = 0; i < r.rating; i++) { %><svg width="18" height="18" aria-hidden="true"><use href="#i-star"/></svg><% } %></div>
+        <blockquote><p><%= r.text %></p></blockquote>
+        <figcaption><strong><%= r.name %></strong>, <%= r.location %></figcaption>
+      </figure>
+      <% }) %>
+    </div>
+    <p class="fine center">Individual results vary. Reviews reflect personal experiences.</p>
+  </div>
+</section>
+<% } %>
+
+<%- include('../partials/pricing') %>
+
+<section class="section guarantee-wrap" aria-labelledby="g-title">
+  <div class="container guarantee reveal">
+    <img src="/img/guarantee.svg" alt="<%= guaranteeDays %>-day money-back guarantee seal" width="180" height="180" loading="lazy">
+    <div>
+      <h2 id="g-title">Try it for <%= guaranteeDays %> days. Love it, or get your money back.</h2>
+      <p>We want you to feel completely safe trying <%= site.name %>. If for any reason you are not satisfied, contact customer support within <%= guaranteeDays %> days of your purchase for a refund of the product price. No hard feelings, no complicated questions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section tinted" id="faq" aria-labelledby="faq-title">
+  <div class="container narrow">
+    <p class="eyebrow center">Questions?</p>
+    <h2 id="faq-title" class="center">Frequently asked questions</h2>
+    <%- include('../partials/faq') %>
+  </div>
+</section>
+
+<section class="section final-cta" aria-labelledby="final-title">
+  <div class="container center">
+    <h2 id="final-title">Six months from now, how do you want to feel?</h2>
+    <p class="lead">You can keep hoping the next diet will be different, or you can give your body the cellular support it may be missing. With the <%= guaranteeDays %>-day guarantee, the only risk is not trying.</p>
+    <a class="btn btn-lg" href="#pricing">Yes, I Want My Energy Back <svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
