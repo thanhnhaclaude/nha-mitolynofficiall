@@ -11,7 +11,7 @@
         <h3><%= p.name %></h3>
         <p class="supply"><%= p.bottles %> Bottle<%= p.bottles > 1 ? 's' : '' %> &middot; <%= p.supply %></p>
         <div class="bottles" aria-hidden="true">
-          <% for (let i = 0; i < Math.min(p.bottles, 6); i++) { %><img src="/img/bottle.svg" alt="" width="60" height="110" loading="lazy"><% } %>
+          <% for (let i = 0; i < Math.min(p.bottles, 6); i++) { %><img src="/img/mitolyn-bottle.png" alt="" width="60" height="87" loading="lazy"><% } %>
         </div>
         <p class="price"><span class="amount">$<%= p.price %></span> <span class="per">/ bottle</span></p>
         <p class="total">Total <s>$<%= p.oldPrice %></s> <strong>$<%= p.total %></strong></p>
