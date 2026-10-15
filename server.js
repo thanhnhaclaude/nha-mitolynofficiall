@@ -80,17 +80,22 @@ Object.entries(legal).forEach(([slug, doc]) => {
 
 // Outbound order link: one place to change the destination, and lets ads
 // tracking fire before leaving. rel="sponsored nofollow" is set on the anchors.
-app.get('/order', (req, res) => {
+// /go-discount keeps old ad and link-shortener URLs working.
+// The package is passed as ClickBank's "tid" tracking id (alphanumeric, max 24 chars)
+// so sales can be traced back to the button that was clicked in ClickBank reports.
+app.get(['/order', '/go-discount'], (req, res) => {
   const target = new URL(site.orderUrl, site.url);
-  const pkg = req.query.pkg;
-  if (pkg && /^[a-z0-9-]{1,20}$/i.test(pkg)) target.searchParams.set('pkg', pkg);
+  const pkg = String(req.query.pkg || '');
+  const src = String(req.query.src || '');
+  const tid = /^[a-z0-9]{1,20}$/i.test(pkg) ? `pkg${pkg}` : src;
+  if (/^[a-z0-9]{1,24}$/i.test(tid)) target.searchParams.set('tid', tid);
   res.set('X-Robots-Tag', 'noindex, nofollow');
   res.redirect(302, target.toString());
 });
 
 app.get('/robots.txt', (req, res) => {
   res.type('text/plain').send(
-    `User-agent: *\nAllow: /\nDisallow: /order\n\nSitemap: ${site.url}/sitemap.xml\n`
+    `User-agent: *\nAllow: /\nDisallow: /order\nDisallow: /go-discount\n\nSitemap: ${site.url}/sitemap.xml\n`
   );
 });
 
